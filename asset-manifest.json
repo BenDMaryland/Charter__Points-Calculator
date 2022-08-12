@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Charter__Points-Calculator/static/css/main.7e7f90a6.css",
+    "main.js": "/Charter__Points-Calculator/static/js/main.253a510e.js",
+    "static/js/787.9e066ff7.chunk.js": "/Charter__Points-Calculator/static/js/787.9e066ff7.chunk.js",
+    "index.html": "/Charter__Points-Calculator/index.html",
+    "main.7e7f90a6.css.map": "/Charter__Points-Calculator/static/css/main.7e7f90a6.css.map",
+    "main.253a510e.js.map": "/Charter__Points-Calculator/static/js/main.253a510e.js.map",
+    "787.9e066ff7.chunk.js.map": "/Charter__Points-Calculator/static/js/787.9e066ff7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e7f90a6.css",
+    "static/js/main.253a510e.js"
+  ]
+}
