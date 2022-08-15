@@ -72,6 +72,8 @@ export const recordParser = (records) => {
     return dataGroupByMonth;
 };
 
+
+
 export const calculatePoints = (price, point1 = 1, point2 = 2) => {
     let pointsPrice = Math.floor(price);
     let pointPart1 = 0;

@@ -1,29 +1,33 @@
 
 import './App.css';
-import { transactionMockData, recordParser, calculatePoints } from "./services/transaction.api";
+import { transactionMockData, recordParser, fetchTransactionMockRecord } from "./services/transaction.api";
 import { useEffect, useState } from 'react';
 import RewardsTable from './components/RewardsTable';
 
 
 function App() {
 
-  const [mockTransactions, setMockTransactions] = useState(recordParser(transactionMockData))
+  const [mockTransactions, setMockTransactions] = useState([])
   const [months, setmonths] = useState([])
 
   useEffect(() => {
-    setmonths(Object.keys(mockTransactions))
-  }, [mockTransactions])
+    setMockTransactions(fetchTransactionMockRecord(transactionMockData))
+  }, [])
 
 
-  console.log("transactionMockData", transactionMockData);
-  console.log("afterParser", recordParser(transactionMockData));
+  useEffect(() => {
+    if (Array.isArray(transactionMockData)) {
+      setMockTransactions(recordParser(transactionMockData))
+    }
+    setmonths(Object.keys(recordParser(transactionMockData)))
+  }, [transactionMockData])
 
+  if (months.length === 0) return <p>Loading</p>
 
   return (
     <div className="App">
       {months.map((month) => (
         < RewardsTable key={month} mockTransactions={mockTransactions[month]} month={month} />)
-
       )}
     </div>
   );
