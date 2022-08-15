@@ -8,22 +8,29 @@ import RewardsTable from './components/RewardsTable';
 function App() {
 
   const [mockTransactions, setMockTransactions] = useState([])
+  const [loaded, setLoaded] = useState(false)
+
   const [months, setmonths] = useState([])
 
   useEffect(() => {
-    setMockTransactions(fetchTransactionMockRecord(transactionMockData))
+    fetchTransactionMockRecord()
+      .then(r => {
+        setMockTransactions(r)
+        setLoaded(true)
+      })
   }, [])
 
 
   useEffect(() => {
-    if (Array.isArray(transactionMockData)) {
-      setMockTransactions(recordParser(transactionMockData))
+    console.log(mockTransactions, loaded)
+    if (loaded) {
+      setMockTransactions(recordParser(mockTransactions))
+      setmonths(Object.keys(recordParser(mockTransactions)))
     }
-    setmonths(Object.keys(recordParser(transactionMockData)))
-  }, [transactionMockData])
+  }, [loaded])
 
-  if (months.length === 0) return <p>Loading</p>
 
+  if (!loaded) return <p>Loading</p>
   return (
     <div className="App">
       {months.map((month) => (
